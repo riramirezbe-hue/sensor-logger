@@ -1,0 +1,18 @@
+[Unit]
+Description=Logs data from a mock sensor periodically
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/sensor-logger
+Restart=on-failure
+RestartSec=5
+
+# For enhanced security, it's recommended to run services as a non-root user.
+# Create a dedicated user and group for this service and uncomment the following lines.
+# Ensure the user has write permissions to the log file directory (e.g., /var/log/sensor-logger).
+# User=sensoruser
+# Group=sensoruser
+
+[Install]
+WantedBy=multi-user.target
